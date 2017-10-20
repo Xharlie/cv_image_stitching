@@ -98,9 +98,19 @@ function challenge1b()
 bg_img = im2double(imread('Osaka.png')); %imshow(bg_img);
 portrait_img = im2double(imread('portrait_small.png')); %imshow(portrait_img);
 
+fh=figure();
+subplot(1, 2, 1); imshow(portrait_img);
+hold on;
+subplot(1,2,2);  imshow(bg_img);
+portrait_pts = ginput(4)
+bg_pts = ginput(4)
+delete(fh);
 % Estimate homography
-% portrait_pts = [xp1 yp1; xp2 yp2; xp3 yp3; xp4 yp4];
-% bg_pts = [xb1 yb1; xb2 yb2; xb3 yb3; xb4 yb4];
+% portrait_pts = [0 0; 327 0; 327 400; 0 400];
+% bg_pts = [100.9255   17.7340;
+%   277.9468   68.7979;
+%   288.1596  422.8404;
+%    80.5000  436.4574];
 
 H_3x3 = computeHomography(portrait_pts, bg_pts);
 
