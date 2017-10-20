@@ -48,9 +48,17 @@ orig_img = imread('portrait.png');
 warped_img = imread('portrait_transformed.png');
 
 % Choose 4 corresponding points (use ginput)
-%src_pts_nx2  = [xs1 ys1; xs2 ys2; xs3 ys3; xs4 ys4];
-%dest_pts_nx2 = [xd1 yd1; xd2 yd2; xd3 yd3; xd4 yd4];
-
+fh=figure();
+subplot(1, 2, 1); imshow(orig_img);
+hold on;
+subplot(1,2,2);  imshow(warped_img);
+src_pts_nx2 = ginput(4)
+dest_pts_nx2 = ginput(4)
+delete(fh);
+% src_pts_nx2 = [160.9278  103.1738; 640.0722  103.1738; ...
+%     160.9278  693.5481; 640.0722  693.5481]
+% dest_pts_nx2 = [143.0532  143.0532; 619.6489   28.1596; ...
+%     121.7766  594.1170; 657.9468  768.5851]
 H_3x3 = computeHomography(src_pts_nx2, dest_pts_nx2);
 % src_pts_nx2 and dest_pts_nx2 are the coordinates of corresponding points 
 % of the two images, respectively. src_pts_nx2 and dest_pts_nx2 
@@ -65,9 +73,14 @@ H_3x3 = computeHomography(src_pts_nx2, dest_pts_nx2);
 % test_pts_nx2 should be an nx2 matrix, where n is the number of points, the
 % first column contains the x coordinates and the second column contains
 % the y coordinates.
-
-%test_pts_nx2 = [xt1 yt1; xt2 yt2; xt3 yt3; xt4 yt4];
-
+fh = figure();
+subplot(1, 2, 1); imshow(orig_img);
+hold on;
+subplot(1,2,2);  imshow(warped_img);
+test_pts_nx2 = ginput(4);
+delete(fh);
+% test_pts_nx2=[160.9278  103.1738; 640.0722  103.1738; ...
+%     160.9278  693.5481; 640.0722  693.5481];
 % Apply homography
 dest_pts_nx2 = applyHomography(H_3x3, test_pts_nx2);
 % test_pts_nx2 and dest_pts_nx2 are the coordinates of corresponding points 
