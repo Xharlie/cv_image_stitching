@@ -136,17 +136,16 @@ imgs = imread('mountain_left.png'); imgd = imread('mountain_center.png');
 % coordinates and the second column contains the y coordinates
 
 before_img = showCorrespondence(imgs, imgd, xs, xd);
-%figure, imshow(before_img);
+% figure, imshow(before_img);
 imwrite(before_img, 'before_ransac.png');
 
 % Use RANSAC to reject outliers
-%ransac_n = ??; % Max number of iteractions
-%ransac_eps = ??; Acceptable alignment error 
+ransac_n = 10000; % Max number of iteractions
+ransac_eps = 5; % Acceptable alignment error 
 
 [inliers_id, H_3x3] = runRANSAC(xs, xd, ransac_n, ransac_eps);
 
 after_img = showCorrespondence(imgs, imgd, xs(inliers_id, :), xd(inliers_id, :));
-%figure, imshow(after_img);
 imwrite(after_img, 'after_ransac.png');
 
 %%
