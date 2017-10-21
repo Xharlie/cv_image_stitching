@@ -180,3 +180,10 @@ imwrite(stitched_img, 'mountain_panorama.png');
 %%
 function challenge1f()
 % Your own panorama
+img1 = im2single(imread('challenge1f/1.jpeg'));
+img2 = im2single(imread('challenge1f/2.jpeg'));
+img11 = im2single(imread('challenge1f/11.jpeg'));
+
+stitched_img = stitchImg(img1,img2,img11);
+figure, imshow(stitched_img);
+imwrite(stitched_img, 'challenge1f/collage.png');
