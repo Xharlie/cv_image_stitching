@@ -183,7 +183,8 @@ function challenge1f()
 img1 = im2single(imread('challenge1f/1.jpeg'));
 img2 = im2single(imread('challenge1f/2.jpeg'));
 img11 = im2single(imread('challenge1f/11.jpeg'));
+img12 = im2single(imread('challenge1f/12.jpeg'));
 
-stitched_img = stitchImg(img1,img2,img11);
+stitched_img = stitchImg(img1,img2,img11,img12);
 figure, imshow(stitched_img);
 imwrite(stitched_img, 'challenge1f/collage.png');
